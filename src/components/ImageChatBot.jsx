@@ -28,7 +28,7 @@ export const ImageChatBot = ({ img }) => {
                     <LoadingIcon />
                 )  : (
                     <img 
-                        src={ `${ img }${ state }` }
+                        src={ `${ img }${ state.index }` }
                         alt="imagen de muestra"
                     /> 
                 )
