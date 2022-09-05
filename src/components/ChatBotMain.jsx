@@ -16,6 +16,7 @@ export const ChatBotMain = () => {
                     steps={ steps } 
                     enableSmoothScroll
                     enableMobileAutoFocus
+                    floating
                     speechSynthesis={{ enable: true, lang: 'en' }}
                 />
             </ThemeProvider>

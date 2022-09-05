@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { fetchQuote } from '../fetch/fetchQuote';
+import { LoadingIcon } from './LoadingIcon';
 
 export const QuoteChatBot = () => {
 
     const [state, setState] = useState({
         content: '',
         author: '',
-        dateAdded: ''
+        dateAdded: '',
+        loading: true
     });
     
 
@@ -16,7 +18,8 @@ export const QuoteChatBot = () => {
             setState({
                 content, 
                 author, 
-                dateAdded
+                dateAdded,
+                loading: false
             });
         }
         getQ();
@@ -24,24 +27,33 @@ export const QuoteChatBot = () => {
 
     
     return (
-        <div style={{ width: '100%' }}>
-            <h3>Summary</h3>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>Quote: &nbsp;</td>
-                        <td>{ state.content }</td>
-                    </tr>
-                    <tr>
-                        <td>Author: &nbsp;</td>
-                        <td>{ state.author }</td>
-                    </tr>
-                    <tr>
-                        <td>Date: &nbsp;</td>
-                        <td>{ String(state.dateAdded) }</td>
-                    </tr>
-                </tbody>
-            </table>
-      </div>
+        <>
+            {
+                (state.loading) ? (
+                    <LoadingIcon />
+                ) : (
+                    <div style={{ width: '100%' }}>
+                        <h3>Summary</h3>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Quote: &nbsp;</td>
+                                    <td>{ state.content }</td>
+                                </tr>
+                                <tr>
+                                    <td>Author: &nbsp;</td>
+                                    <td>{ state.author }</td>
+                                </tr>
+                                <tr>
+                                    <td>Date: &nbsp;</td>
+                                    <td>{ String(state.dateAdded) }</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                )
+            }
+        </>
+        
     )
 }

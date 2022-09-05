@@ -1,23 +1,39 @@
 import React, { useEffect, useState } from 'react'
+import { LoadingIcon } from './LoadingIcon';
 
 export const ImageChatBot = ({ img }) => {
 
-    const [state, setState] = useState(0);
+    const [state, setState] = useState({
+        index: 0,
+        loading: true
+    });
     
 
     useEffect(() => {
         
         const getIm = () => {
-            setState(Math.floor(Math.random() * 10001));
+            setState({
+                index: Math.floor(Math.random() * 10001),
+                loading: false
+            });
         }
         getIm()
     }, []);
 
     
     return (
-        <img 
-            src={ `${ img }${ state }` }
-            alt="imagen de muestra"
-        /> 
+        <>
+            {
+                (state.loading)? (
+                    <LoadingIcon />
+                )  : (
+                    <img 
+                        src={ `${ img }${ state }` }
+                        alt="imagen de muestra"
+                    /> 
+                )
+            }
+        </>
+        
     )
 }
