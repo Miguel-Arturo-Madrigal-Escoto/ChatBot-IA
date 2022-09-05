@@ -1,0 +1,10 @@
+.img-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-div  img {
+    width: 100%;
+}
