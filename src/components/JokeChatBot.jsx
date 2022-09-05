@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { fetchJoke } from '../fetch/fetchJoke';
 import { LoadingIcon } from './LoadingIcon';
@@ -8,7 +9,8 @@ export const JokeChatBot = () => {
         joke: '',
         loading: true
     });
-    
+
+
 
     useEffect(() => {
         const getJ = async() => {
